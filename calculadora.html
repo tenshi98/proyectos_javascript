@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="resources/img/favicon.png">
+		<title>Calculadora</title>
+		<!-- Bootstrap core CSS -->
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Estilos propios -->
+		<link href="resources/css/form-validation.css" rel="stylesheet">
+		<style>
+			.select_button{margin: 5px;}
+		</style>
+	</head>
+
+	<body class="bg-light">
+
+		<div class="container">
+			<div class="py-5 text-center">
+				<h2>Calculadora</h2>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-md-12">
+					
+					
+					<form action="" class="form-inline justify-content-center" name="calc">
+
+						<input type="" name="" class="form-control col-sm-12" id="input_text" onkeyup="allowedChar(this);" >
+                        <div class="col-sm-10 ">
+							
+							<hr>
+							
+							<div class="text-center select_button">
+								<a onClick="addText(7)" class="btn btn-outline-primary col-sm-2">7</a>
+								<a onClick="addText(8)" class="btn btn-outline-primary col-sm-2">8</a>
+								<a onClick="addText(9)" class="btn btn-outline-primary col-sm-2">9</a>
+								<a onClick="addText('/')" class="btn btn-outline-primary col-sm-2">/</a>
+							</div>
+							<div class="text-center select_button">
+								<a onClick="addText(4)" class="btn btn-outline-primary col-sm-2">4</a>
+								<a onClick="addText(5)" class="btn btn-outline-primary col-sm-2">5</a>
+								<a onClick="addText(6)" class="btn btn-outline-primary col-sm-2">6</a>
+								<a onClick="addText('x')" class="btn btn-outline-primary col-sm-2">x</a>
+							</div>
+							<div class="text-center select_button ">
+								<a onClick="addText(1)" class="btn btn-outline-primary col-sm-2">1</a>
+								<a onClick="addText(2)" class="btn btn-outline-primary col-sm-2">2</a>
+								<a onClick="addText(3)" class="btn btn-outline-primary col-sm-2">3</a>
+								<a onClick="addText('-')" class="btn btn-outline-primary col-sm-2">-</a>
+							</div>
+							<div class="text-center select_button">
+								<a onClick="addText(0)" class="btn btn-outline-primary col-sm-2">0</a>
+								<a onClick="addText(.)" class="btn btn-outline-primary col-sm-2">.</a>
+								<a onClick="addText(9)" class="btn btn-outline-primary col-sm-2">9</a>
+								<a onClick="addText('+')" class="btn btn-outline-primary col-sm-2">+</a>
+							</div>
+							<div class="text-center select_button">
+								<a onClick="addText('(')" class="btn btn-outline-primary col-sm-1">(</a>
+								<a onClick="addText(')')" class="btn btn-outline-primary col-sm-1">)</a>
+								<a onClick="removelastText()" class="btn btn-outline-primary col-sm-2">Retroceder</a>
+								<a onClick="clearAllText()" class="btn btn-outline-primary col-sm-2">Borrar</a>
+								<a onClick="Execute()" class="btn btn-outline-primary col-sm-2">=</a>
+							</div>
+						</div>
+                    </form>
+                        
+                        
+				</div>
+			</div>
+
+<!-- ================================================== -->
+<!-- Codigo de testeto -->
+
+		<script>
+			//agrego los numeros y las operaciones
+			function addText(txt){
+				document.getElementById("input_text").value+=txt;
+			}
+			//borro todo
+			function clearAllText(){
+				document.getElementById("input_text").value="";
+			}
+			//eliminar el ultimo dato
+			function removelastText(){
+				var strng = document.getElementById("input_text").value;
+				document.getElementById("input_text").value=strng.substring(0,strng.length-1);
+			}
+			//realizo los calculos en base a lo ingresado	
+			function Execute(){
+				//en caso de fallo
+				try {
+					document.calc.input_text.value = eval(document.calc.input_text.value);; 
+				} catch (e) {
+					if (e instanceof SyntaxError) {
+						alert(e.message);
+					}
+				}
+			}
+			//funcion caracteres admitidos en el input
+			function allowedChar(elem) {
+                var validChars = /[0-9(). ]/;
+                var strIn = elem.value;
+                var strOut = '';
+                for(var i=0; i < strIn.length; i++) {
+                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+                }
+                elem.value = strOut;
+            }	
+				
+		</script>
+		
+<!-- ================================================== -->			
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		
+	</body>
+</html>

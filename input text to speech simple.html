@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="resources/img/favicon.png">
+		<title>Text to Speech</title>
+		<!-- Bootstrap core CSS -->
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Estilos propios -->
+		<link href="resources/css/form-validation.css" rel="stylesheet">
+	</head>
+
+	<body class="bg-light">
+
+		<div class="container">
+			<div class="py-5 text-center">
+				<h2>Text to Speech</h2>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-md-12 order-md-1">
+					<form class="needs-validation" novalidate>
+						
+						<div class="alert alert-danger" role="alert">
+							Solo funciona en chrome, no en firefox
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<label for="input_1">Texto</label>
+								<input type="text" class="form-control" id="texto" placeholder="" value="" required>
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+							
+						</div>
+						
+						<hr class="mb-4">
+						<button class="btn btn-primary btn-lg btn-block" type="button" id="hablar">Hablar</button>
+					
+					</form>
+				</div>
+			</div>
+
+<!-- ================================================== -->
+<!-- Codigo de testeto -->
+
+		<script>
+			document.getElementById('hablar').addEventListener("click",()=>{
+				decir(document.getElementById("texto").value);
+			});
+
+			function decir(texto){
+				speechSynthesis.speak(new SpeechSynthesisUtterance(texto));
+			}
+			
+		</script>
+		
+<!-- ================================================== -->			
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		
+    
+	</body>
+</html>

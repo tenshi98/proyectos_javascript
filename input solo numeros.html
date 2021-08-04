@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="resources/img/favicon.png">
+		<title>Solo Numeros</title>
+		<!-- Bootstrap core CSS -->
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Estilos propios -->
+		<link href="resources/css/form-validation.css" rel="stylesheet">
+	</head>
+
+	<body class="bg-light">
+
+		<div class="container">
+			<div class="py-5 text-center">
+				<h2>Solo Numeros</h2>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-md-12 order-md-1">
+					<h4 class="mb-3">Custom inputs</h4>
+					<form class="needs-validation" novalidate>
+						
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="input_1">Input 1</label>
+								<input type="text" class="form-control" id="input_1" placeholder="" value="" required onkeypress="return soloNumerosNaturales(event)">
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="input_2">Input 2</label>
+								<input type="text" class="form-control" id="input_2" placeholder="" value="" required onkeypress="return soloNumerosNaturales(event)">
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="input_3">Input 3</label>
+								<input type="text" class="form-control" id="input_3" placeholder="" value="" required onkeypress="return soloNumerosNaturales(event)">
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="input_4">Input 4</label>
+								<input type="text" class="form-control" id="input_4" placeholder="" value="" required onkeypress="return soloNumerosNaturales(event)">
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								<label for="input_5">Input 5</label>
+								<input type="text" class="form-control" id="input_5" placeholder="" value="" required onkeypress="return soloNumerosNaturales(event)">
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+							<div class="col-md-6 mb-3">
+								<label for="input_6">Input 6</label>
+								<input type="text" class="form-control" id="input_6" placeholder="" value="" required onkeypress="return soloNumerosNaturales(event)">
+								<div class="invalid-feedback">
+									Dato es requerido.
+								</div>
+							</div>
+						</div>
+						
+						
+    
+
+					</form>
+				</div>
+			</div>
+
+<!-- ================================================== -->
+<!-- Codigo de testeto -->
+
+		<script>
+				function soloNumerosNaturales(evt){
+					var charCode = (evt.which) ? evt.which : event.keyCode
+					if (charCode > 31 && (charCode < 48 || charCode > 57)){
+						//verifico si presiono el punto
+						if (charCode == 46) {
+							return true;
+						//valor negativo
+						}else if(charCode == 45){
+							return true;
+						}else{
+							return false;
+						}
+					}else{
+						return true;
+					}
+				}
+		</script>
+		
+<!-- ================================================== -->			
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		
+    
+	</body>
+</html>

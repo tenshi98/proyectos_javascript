@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="resources/img/favicon.png">
+		<title>Ruleta</title>
+		<!-- Bootstrap core CSS -->
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Estilos propios -->
+		<link href="resources/css/form-validation.css" rel="stylesheet">
+	</head>
+
+	<body class="bg-light">
+
+		<div class="container">
+			<div class="py-5 text-center">
+				<h2>Ruleta</h2>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-md-6">
+					<div class="vara"></div>
+					<img src="resources/img/ruleta.png" id="ruleta">
+					
+				</div>
+				<div class="col-md-6">
+					<h4 class="titulo-historial">Historial</h4>
+					<h3 class="dinero-actual" id="dinero">Dinero Actual: $50</h3>
+					<p class="historial" id="historial"></p>
+				</div>
+			</div>
+			
+<!-- ================================================== -->
+<!-- Codigo de testeto -->
+
+		<script>
+			document.getElementById('ruleta').addEventListener("click",girar);
+			
+			
+
+			dinero = 50;
+
+			function girar(){
+				if (dinero >= 20) {
+					let rand = Math.random()*7200; 
+					sumarPuntos(-20);
+					calcular(rand);
+				}  
+				else {
+					alert("no te queda suficiente dinero");
+				}
+			}
+			function sumarPuntos(p){
+				dinero += p;
+				document.getElementById('dinero').innerHTML = "Dinero Actual: $" + dinero;
+			}
+
+
+			function calcular(rand){
+				valor = rand / 360;
+				valor = (valor - parseInt(valor.toString().split(".")[0])) * 360;
+				ruleta.style.transform = "rotate("+rand+"deg)";
+				setTimeout(()=>{
+				switch(true){
+					case valor > 0 && valor <= 45:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has ganado y te has llevado $500.<br/>');
+						sumarPuntos(500);
+						break;
+					case valor > 45 && valor <= 90:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has ganado $20.<br/>');
+						sumarPuntos(20);
+						break;
+					case valor > 90 && valor <= 135:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $5.<br/>');
+						sumarPuntos(5);
+						break; 
+					case valor > 135 && valor <= 180:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $50.<br/>');
+						sumarPuntos(50);
+						break;
+					case valor > 180 && valor <= 225:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $100.<br/>');
+						sumarPuntos(100);
+						break;
+					case valor > 225 && valor <= 270:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'No has sumado dinero.<br/>');
+						break;
+					case valor > 270 && valor <= 315:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $70.<br/>');
+						sumarPuntos(70);
+						break;
+					case valor > 315 && valor <= 360:
+						document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has sumado $10.<br/>');
+						sumarPuntos(10);
+						break;
+				}},5000);
+			}		
+		</script>
+		
+		<style>
+			.vara {height: 70px;width: 15px;background-color: #aaa;margin: auto;position: relative;top: 10px;border-radius: 0px 0px 8px 8px;border: 1px solid #000;border-top: 5px solid #000;z-index: 1000;}
+			#ruleta {width: 100%;z-index: 100;transition: all 5s}
+			.titulo-historial {font-size: 60px;color: #333;text-align: center;}
+			.titulo-historial {font-size: 30px;color: #333;text-align: left;}
+			.historial {font-size: 20px;color: #333;text-align: left;}
+			
+		</style>
+<!-- ================================================== -->			
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		
+	</body>
+</html>

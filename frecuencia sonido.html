@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="icon" href="resources/img/favicon.png">
+		<title>Frecuencia de sonido</title>
+		<!-- Bootstrap core CSS -->
+		<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+		<!-- Estilos propios -->
+		<link href="resources/css/form-validation.css" rel="stylesheet">
+	</head>
+
+	<body class="bg-light">
+
+		<div class="container">
+			<div class="py-5 text-center">
+				<h2>Frecuencia de sonido</h2>
+			</div>
+
+			<div class="row">
+				
+				<div class="col-md-12 order-md-1">
+					
+					
+					<div class="row justify-content-center">
+						<h1 class="jumbotron-heading" id="Frequencia">0 Hz</h1>
+					</div>
+					
+					<form class="needs-validation" novalidate>
+						
+						<div class="row">
+							<div class="col-md-12 mb-3">
+								<div class="form-group">
+									<label for="ControlRange_1">Frecuencia</label>
+									<input type="range" class="form-control-range" id="range" min="150" max="1500">
+								</div>
+							</div>
+						</div>
+						
+						
+						<hr class="mb-4">
+						<button class="btn btn-primary btn-lg btn-block" type="button" id="iniciar">Iniciar</button>
+						<button class="btn btn-primary btn-lg btn-block" type="button" id="detener">Detener</button>
+					
+					</form>
+				</div>
+			</div>
+
+<!-- ================================================== -->
+<!-- Codigo de testeto -->
+
+		<script>
+			//cargo la funcion iniciar
+			window.addEventListener("load",iniciar);
+			//seteo botones y elementos en caso de interaccion
+			document.getElementById('iniciar').addEventListener("click",iniciarFrecuencia);
+			document.getElementById('detener').addEventListener("click",detenerFrecuencia);
+			document.getElementById("range").addEventListener("change",cambiarFrecuencia);
+			
+			//funcion iniciar
+			function iniciar(){
+				try{
+				   window.AudioContext = window.AudioContext || window.webkitAudioContext;
+				   context = new AudioContext();
+				}
+				catch(e){
+				   alert("La API no funciona, lo siento");
+				}
+			}
+			
+			//iniciar frecuencia
+			function iniciarFrecuencia(){
+				let range = document.getElementById("range").value;
+				osc = context.createOscillator();
+				osc.frequency.value = range;
+				osc.connect(context.destination);
+				osc.start(0);
+				document.getElementById("Frequencia").innerHTML = range + " Hz";
+			}
+			
+			//terminar frecuencia
+			function detenerFrecuencia(){
+				osc.stop(0);
+				document.getElementById("Frequencia").innerHTML = "0 Hz";
+			}
+			
+			//cambiar la frecuencia
+			function cambiarFrecuencia(){
+				let range = document.getElementById("range").value;
+				osc.frequency.value = range;
+				document.getElementById("Frequencia").innerHTML = range + " Hz";
+			}
+			
+		</script>
+		
+<!-- ================================================== -->			
+		</div>
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="resources/js/bootstrap.min.js"></script>
+		
+	</body>
+</html>

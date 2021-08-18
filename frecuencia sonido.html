@@ -52,49 +52,49 @@
 <!-- ================================================== -->
 <!-- Codigo de testeto -->
 
-		<script>
-			//cargo la funcion iniciar
-			window.addEventListener("load",iniciar);
-			//seteo botones y elementos en caso de interaccion
-			document.getElementById('iniciar').addEventListener("click",iniciarFrecuencia);
-			document.getElementById('detener').addEventListener("click",detenerFrecuencia);
-			document.getElementById("range").addEventListener("change",cambiarFrecuencia);
-			
-			//funcion iniciar
-			function iniciar(){
-				try{
-				   window.AudioContext = window.AudioContext || window.webkitAudioContext;
-				   context = new AudioContext();
+			<script>
+				//cargo la funcion iniciar
+				window.addEventListener("load",iniciar);
+				//seteo botones y elementos en caso de interaccion
+				document.getElementById('iniciar').addEventListener("click",iniciarFrecuencia);
+				document.getElementById('detener').addEventListener("click",detenerFrecuencia);
+				document.getElementById("range").addEventListener("change",cambiarFrecuencia);
+				
+				//funcion iniciar
+				function iniciar(){
+					try{
+					   window.AudioContext = window.AudioContext || window.webkitAudioContext;
+					   context = new AudioContext();
+					}
+					catch(e){
+					   alert("La API no funciona, lo siento");
+					}
 				}
-				catch(e){
-				   alert("La API no funciona, lo siento");
+				
+				//iniciar frecuencia
+				function iniciarFrecuencia(){
+					let range = document.getElementById("range").value;
+					osc = context.createOscillator();
+					osc.frequency.value = range;
+					osc.connect(context.destination);
+					osc.start(0);
+					document.getElementById("Frequencia").innerHTML = range + " Hz";
 				}
-			}
-			
-			//iniciar frecuencia
-			function iniciarFrecuencia(){
-				let range = document.getElementById("range").value;
-				osc = context.createOscillator();
-				osc.frequency.value = range;
-				osc.connect(context.destination);
-				osc.start(0);
-				document.getElementById("Frequencia").innerHTML = range + " Hz";
-			}
-			
-			//terminar frecuencia
-			function detenerFrecuencia(){
-				osc.stop(0);
-				document.getElementById("Frequencia").innerHTML = "0 Hz";
-			}
-			
-			//cambiar la frecuencia
-			function cambiarFrecuencia(){
-				let range = document.getElementById("range").value;
-				osc.frequency.value = range;
-				document.getElementById("Frequencia").innerHTML = range + " Hz";
-			}
-			
-		</script>
+				
+				//terminar frecuencia
+				function detenerFrecuencia(){
+					osc.stop(0);
+					document.getElementById("Frequencia").innerHTML = "0 Hz";
+				}
+				
+				//cambiar la frecuencia
+				function cambiarFrecuencia(){
+					let range = document.getElementById("range").value;
+					osc.frequency.value = range;
+					document.getElementById("Frequencia").innerHTML = range + " Hz";
+				}
+				
+			</script>
 		
 <!-- ================================================== -->			
 		</div>

@@ -115,35 +115,35 @@
 <!-- ================================================== -->
 <!-- Codigo de testeto -->
 
-		<script>
-			//declaracion de items
-			img             = document.querySelector("#img");
-			const blur       = document.querySelector("#ControlRange_1");
-			const hueRotate  = document.querySelector("#ControlRange_2");
-			const contrast   = document.querySelector("#ControlRange_3");
-			const invert     = document.querySelector("#ControlRange_4");
-			const grayscale  = document.querySelector("#ControlRange_5");
-			const opacity    = document.querySelector("#ControlRange_6");
-			const brightness = document.querySelector("#ControlRange_7");
-			const saturate   = document.querySelector("#ControlRange_8");
-			const sepia      = document.querySelector("#ControlRange_9");
-			
-			//funcion para cambiar atributos
-			function cambiar(){
-				filtro = "blur("+blur.value+"px)";
-				filtro += "grayscale("+grayscale.value+"%)";
-				filtro += "opacity("+ opacity.value +"%)"; 
-				filtro += "brightness("+ brightness.value +"%)"; 
-				filtro += "contrast("+ contrast.value +")"; 
-				filtro += "invert("+ invert.value +"%)"; 
-				filtro += "hue-rotate("+ hueRotate.value +"deg)"; 
-				filtro += "sepia("+ sepia.value +"%)"; 
-				filtro += "saturate("+ saturate.value +"%)";
-				img.style.filter = filtro;
-			}	
-			
-			
-		</script>
+			<script>
+				//declaracion de items
+				img             = document.querySelector("#img");
+				const blur       = document.querySelector("#ControlRange_1");
+				const hueRotate  = document.querySelector("#ControlRange_2");
+				const contrast   = document.querySelector("#ControlRange_3");
+				const invert     = document.querySelector("#ControlRange_4");
+				const grayscale  = document.querySelector("#ControlRange_5");
+				const opacity    = document.querySelector("#ControlRange_6");
+				const brightness = document.querySelector("#ControlRange_7");
+				const saturate   = document.querySelector("#ControlRange_8");
+				const sepia      = document.querySelector("#ControlRange_9");
+				
+				//funcion para cambiar atributos
+				function cambiar(){
+					filtro = "blur("+blur.value+"px)";
+					filtro += "grayscale("+grayscale.value+"%)";
+					filtro += "opacity("+ opacity.value +"%)"; 
+					filtro += "brightness("+ brightness.value +"%)"; 
+					filtro += "contrast("+ contrast.value +")"; 
+					filtro += "invert("+ invert.value +"%)"; 
+					filtro += "hue-rotate("+ hueRotate.value +"deg)"; 
+					filtro += "sepia("+ sepia.value +"%)"; 
+					filtro += "saturate("+ saturate.value +"%)";
+					img.style.filter = filtro;
+				}	
+				
+				
+			</script>
 		
 <!-- ================================================== -->			
 		</div>

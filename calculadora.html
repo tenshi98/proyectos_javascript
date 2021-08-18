@@ -76,43 +76,43 @@
 <!-- ================================================== -->
 <!-- Codigo de testeto -->
 
-		<script>
-			//agrego los numeros y las operaciones
-			function addText(txt){
-				document.getElementById("input_text").value+=txt;
-			}
-			//borro todo
-			function clearAllText(){
-				document.getElementById("input_text").value="";
-			}
-			//eliminar el ultimo dato
-			function removelastText(){
-				var strng = document.getElementById("input_text").value;
-				document.getElementById("input_text").value=strng.substring(0,strng.length-1);
-			}
-			//realizo los calculos en base a lo ingresado	
-			function Execute(){
-				//en caso de fallo
-				try {
-					document.calc.input_text.value = eval(document.calc.input_text.value);; 
-				} catch (e) {
-					if (e instanceof SyntaxError) {
-						alert(e.message);
+			<script>
+				//agrego los numeros y las operaciones
+				function addText(txt){
+					document.getElementById("input_text").value+=txt;
+				}
+				//borro todo
+				function clearAllText(){
+					document.getElementById("input_text").value="";
+				}
+				//eliminar el ultimo dato
+				function removelastText(){
+					var strng = document.getElementById("input_text").value;
+					document.getElementById("input_text").value=strng.substring(0,strng.length-1);
+				}
+				//realizo los calculos en base a lo ingresado	
+				function Execute(){
+					//en caso de fallo
+					try {
+						document.calc.input_text.value = eval(document.calc.input_text.value);; 
+					} catch (e) {
+						if (e instanceof SyntaxError) {
+							alert(e.message);
+						}
 					}
 				}
-			}
-			//funcion caracteres admitidos en el input
-			function allowedChar(elem) {
-                var validChars = /[0-9(). ]/;
-                var strIn = elem.value;
-                var strOut = '';
-                for(var i=0; i < strIn.length; i++) {
-                  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
-                }
-                elem.value = strOut;
-            }	
-				
-		</script>
+				//funcion caracteres admitidos en el input
+				function allowedChar(elem) {
+					var validChars = /[0-9(). ]/;
+					var strIn = elem.value;
+					var strOut = '';
+					for(var i=0; i < strIn.length; i++) {
+					  strOut += (validChars.test(strIn.charAt(i)))? strIn.charAt(i) : '';
+					}
+					elem.value = strOut;
+				}	
+					
+			</script>
 		
 <!-- ================================================== -->			
 		</div>

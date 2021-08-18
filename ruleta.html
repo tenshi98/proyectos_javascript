@@ -37,78 +37,78 @@
 <!-- ================================================== -->
 <!-- Codigo de testeto -->
 
-		<script>
-			document.getElementById('ruleta').addEventListener("click",girar);
-			
-			
+			<script>
+				document.getElementById('ruleta').addEventListener("click",girar);
+				
+				
 
-			dinero = 50;
+				dinero = 50;
 
-			function girar(){
-				if (dinero >= 20) {
-					let rand = Math.random()*7200; 
-					sumarPuntos(-20);
-					calcular(rand);
-				}  
-				else {
-					alert("no te queda suficiente dinero");
+				function girar(){
+					if (dinero >= 20) {
+						let rand = Math.random()*7200; 
+						sumarPuntos(-20);
+						calcular(rand);
+					}  
+					else {
+						alert("no te queda suficiente dinero");
+					}
 				}
-			}
-			function sumarPuntos(p){
-				dinero += p;
-				document.getElementById('dinero').innerHTML = "Dinero Actual: $" + dinero;
-			}
+				function sumarPuntos(p){
+					dinero += p;
+					document.getElementById('dinero').innerHTML = "Dinero Actual: $" + dinero;
+				}
 
 
-			function calcular(rand){
-				valor = rand / 360;
-				valor = (valor - parseInt(valor.toString().split(".")[0])) * 360;
-				ruleta.style.transform = "rotate("+rand+"deg)";
-				setTimeout(()=>{
-				switch(true){
-					case valor > 0 && valor <= 45:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has ganado y te has llevado $500.<br/>');
-						sumarPuntos(500);
-						break;
-					case valor > 45 && valor <= 90:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has ganado $20.<br/>');
-						sumarPuntos(20);
-						break;
-					case valor > 90 && valor <= 135:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $5.<br/>');
-						sumarPuntos(5);
-						break; 
-					case valor > 135 && valor <= 180:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $50.<br/>');
-						sumarPuntos(50);
-						break;
-					case valor > 180 && valor <= 225:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $100.<br/>');
-						sumarPuntos(100);
-						break;
-					case valor > 225 && valor <= 270:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'No has sumado dinero.<br/>');
-						break;
-					case valor > 270 && valor <= 315:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $70.<br/>');
-						sumarPuntos(70);
-						break;
-					case valor > 315 && valor <= 360:
-						document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has sumado $10.<br/>');
-						sumarPuntos(10);
-						break;
-				}},5000);
-			}		
-		</script>
-		
-		<style>
-			.vara {height: 70px;width: 15px;background-color: #aaa;margin: auto;position: relative;top: 10px;border-radius: 0px 0px 8px 8px;border: 1px solid #000;border-top: 5px solid #000;z-index: 1000;}
-			#ruleta {width: 100%;z-index: 100;transition: all 5s}
-			.titulo-historial {font-size: 60px;color: #333;text-align: center;}
-			.titulo-historial {font-size: 30px;color: #333;text-align: left;}
-			.historial {font-size: 20px;color: #333;text-align: left;}
+				function calcular(rand){
+					valor = rand / 360;
+					valor = (valor - parseInt(valor.toString().split(".")[0])) * 360;
+					ruleta.style.transform = "rotate("+rand+"deg)";
+					setTimeout(()=>{
+					switch(true){
+						case valor > 0 && valor <= 45:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has ganado y te has llevado $500.<br/>');
+							sumarPuntos(500);
+							break;
+						case valor > 45 && valor <= 90:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has ganado $20.<br/>');
+							sumarPuntos(20);
+							break;
+						case valor > 90 && valor <= 135:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $5.<br/>');
+							sumarPuntos(5);
+							break; 
+						case valor > 135 && valor <= 180:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $50.<br/>');
+							sumarPuntos(50);
+							break;
+						case valor > 180 && valor <= 225:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $100.<br/>');
+							sumarPuntos(100);
+							break;
+						case valor > 225 && valor <= 270:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'No has sumado dinero.<br/>');
+							break;
+						case valor > 270 && valor <= 315:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'has sumado $70.<br/>');
+							sumarPuntos(70);
+							break;
+						case valor > 315 && valor <= 360:
+							document.getElementById('historial').insertAdjacentHTML('beforeend', 'Has sumado $10.<br/>');
+							sumarPuntos(10);
+							break;
+					}},5000);
+				}		
+			</script>
 			
-		</style>
+			<style>
+				.vara {height: 70px;width: 15px;background-color: #aaa;margin: auto;position: relative;top: 10px;border-radius: 0px 0px 8px 8px;border: 1px solid #000;border-top: 5px solid #000;z-index: 1000;}
+				#ruleta {width: 100%;z-index: 100;transition: all 5s}
+				.titulo-historial {font-size: 60px;color: #333;text-align: center;}
+				.titulo-historial {font-size: 30px;color: #333;text-align: left;}
+				.historial {font-size: 20px;color: #333;text-align: left;}
+				
+			</style>
 <!-- ================================================== -->			
 		</div>
 

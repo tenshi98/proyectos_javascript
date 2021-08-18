@@ -68,72 +68,72 @@
 <!-- ================================================== -->
 <!-- Codigo de testeto -->
 
-		<script>
-			document.getElementById('programar').addEventListener("click",programar);
-			document.getElementById('Contador').style.display = 'none';
-								
-			function programar(){
-				h = parseInt(document.getElementById("horas").value);
-				m = parseInt(document.getElementById("minutos").value);
-				s = parseInt(document.getElementById("segundos").value);
-				//Oculto el div del selector
-				document.getElementById("Selector").style.display = 'none';
-				//Muestro el contador
-				document.getElementById('Contador').style.display = 'block';
-				//llamo a la funcion que actualiza al contador
-				setInterval(function(){actualizar(h,m,s)},1000);
-			}
-
-			function actualizar(h,m,s){
-				//Obtengo el calulo del tiempo
-				diferencia = calcularTiempo(h,m,s);
-				//Si hay segundos
-				if (diferencia > 0) {
-					//Ejecuto operaciones
-					HorasDif    = Math.floor(diferencia / 3600) ;
-					MinutosDif  = Math.floor((diferencia - HorasDif * 3600) / 60);
-					SegundosDif = Math.floor(diferencia - HorasDif * 3600 - MinutosDif * 60);
-					//creo el dato de la hora
-					Resultado = HorasDif + ":" + MinutosDif + ":" + SegundosDif;
-					//Escrivo dentro del input
-					document.getElementById("cuentaRegresiva").innerHTML = Resultado;
-				//si se cumplio el tiempo	
-				}else if(diferencia==0){
-					//ejecuto el archivo audio
-					document.getElementById("audio").play();
-				//si se paso del tiempo	
-				}else{
-					//nada
+			<script>
+				document.getElementById('programar').addEventListener("click",programar);
+				document.getElementById('Contador').style.display = 'none';
+									
+				function programar(){
+					h = parseInt(document.getElementById("horas").value);
+					m = parseInt(document.getElementById("minutos").value);
+					s = parseInt(document.getElementById("segundos").value);
+					//Oculto el div del selector
+					document.getElementById("Selector").style.display = 'none';
+					//Muestro el contador
+					document.getElementById('Contador').style.display = 'block';
+					//llamo a la funcion que actualiza al contador
+					setInterval(function(){actualizar(h,m,s)},1000);
 				}
-				
-				
-			}
 
-
-			function calcularTiempo(h,m,s){
-				//Obtengo el tiempo actual
-				HoraActual = new Date();
-				//creo constante
-				SegHoraActual = 0;
-				//Obtengo los segundos del tiempo actual y lo sumo a la constante
-				SegHoraActual += HoraActual.getHours() * 3600;
-				SegHoraActual += HoraActual.getMinutes() * 60;
-				SegHoraActual += HoraActual.getSeconds();
-				//Obtengo los segundos de la hora programada
-				SegAlarma = 0;
-				SegAlarma += h * 3600;
-				SegAlarma += m * 60;
-				SegAlarma += s; 
-				//Comparo cual es mayor
-				if (SegAlarma > SegHoraActual) {
-					diferencia = SegAlarma - SegHoraActual;
-				}else {
-					diferencia = 0;
+				function actualizar(h,m,s){
+					//Obtengo el calulo del tiempo
+					diferencia = calcularTiempo(h,m,s);
+					//Si hay segundos
+					if (diferencia > 0) {
+						//Ejecuto operaciones
+						HorasDif    = Math.floor(diferencia / 3600) ;
+						MinutosDif  = Math.floor((diferencia - HorasDif * 3600) / 60);
+						SegundosDif = Math.floor(diferencia - HorasDif * 3600 - MinutosDif * 60);
+						//creo el dato de la hora
+						Resultado = HorasDif + ":" + MinutosDif + ":" + SegundosDif;
+						//Escrivo dentro del input
+						document.getElementById("cuentaRegresiva").innerHTML = Resultado;
+					//si se cumplio el tiempo	
+					}else if(diferencia==0){
+						//ejecuto el archivo audio
+						document.getElementById("audio").play();
+					//si se paso del tiempo	
+					}else{
+						//nada
+					}
+					
+					
 				}
-				//devuelvo los segundos
-				return diferencia;
-			}		
-		</script>
+
+
+				function calcularTiempo(h,m,s){
+					//Obtengo el tiempo actual
+					HoraActual = new Date();
+					//creo constante
+					SegHoraActual = 0;
+					//Obtengo los segundos del tiempo actual y lo sumo a la constante
+					SegHoraActual += HoraActual.getHours() * 3600;
+					SegHoraActual += HoraActual.getMinutes() * 60;
+					SegHoraActual += HoraActual.getSeconds();
+					//Obtengo los segundos de la hora programada
+					SegAlarma = 0;
+					SegAlarma += h * 3600;
+					SegAlarma += m * 60;
+					SegAlarma += s; 
+					//Comparo cual es mayor
+					if (SegAlarma > SegHoraActual) {
+						diferencia = SegAlarma - SegHoraActual;
+					}else {
+						diferencia = 0;
+					}
+					//devuelvo los segundos
+					return diferencia;
+				}		
+			</script>
 		
 <!-- ================================================== -->			
 		</div>
